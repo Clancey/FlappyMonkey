@@ -6,6 +6,7 @@ namespace FlappyMonkey
 {
 	class Player
 	{
+		public Vector2 StartLocation { get; set; }
 		// Animation representing the player
 		public Texture2D PlayerTexture;
 		// Position of the Player relative to the upper left side of the screen
@@ -31,7 +32,7 @@ namespace FlappyMonkey
 			Texture = animation;
 
 			// Set the starting position of the player around the middle of the screen and to the back
-			Position = position;
+			StartLocation = Position = position;
 
 			// Set the player to be active
 			Active = true;
@@ -42,11 +43,11 @@ namespace FlappyMonkey
 			DrawOffset = new Vector2 (Width / 2, Height / 2);
 		}
 
-		double jumpTimer = 0;
+		double jumpTimer = GamePhysics.PlayerJumpLength;
 		double fallTimer = 0;
 		bool isJumping = false;
 		// Update the player animation
-		public void Update (GameTime gameTime, bool shouldJump, float maxHeight)
+		public void Update (GameTime gameTime, bool shouldJump, float maxHeight, bool autoFly)
 		{
 			jumpTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
 
@@ -55,7 +56,7 @@ namespace FlappyMonkey
 				Active = false;
 			}
 
-			if (shouldJump) {
+			if (shouldJump && !autoFly) {
 				isJumping = true;
 				jumpTimer = 0;
 			}
@@ -70,11 +71,16 @@ namespace FlappyMonkey
 				Position.Y += Convert.ToInt32 (GamePhysics.PlayerFallSpeed * gameTime.ElapsedGameTime.TotalMilliseconds);
 				fallTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
 			}
-			rotation = TurnToFace (rotation, Rotation (), TurnSpeed);
+			rotation = autoFly ? 0 : TurnToFace (rotation, Rotation (), TurnSpeed);
 			Position.Y = MathHelper.Clamp (Position.Y, 0, maxHeight - Height);
 
-			if (jumpTimer > GamePhysics.PlayerJumpLength)
+			if (jumpTimer > GamePhysics.PlayerJumpLength) {
 				isJumping = false;
+			}
+			if (autoFly && Position.Y >= StartLocation.Y) {
+				isJumping = true;
+				jumpTimer = 0;
+			}
 		}
 
 		private static float TurnToFace (float currentAngle, float targetRotation, float turnSpeed)

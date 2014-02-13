@@ -23,13 +23,19 @@ using Microsoft.Xna.Framework.Media;
 #endregion
 namespace FlappyMonkey
 {
+
+	public enum GameState{
+		Menu,
+		Playing,
+		Score
+	}
 	/// <summary>
 	/// Default Project Template
 	/// </summary>
 	public class Game1 : Game
 	{
 		#region Fields
-
+		public static GameState State { get; set; }
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		// Represents the player
@@ -77,6 +83,7 @@ namespace FlappyMonkey
 			};
 			
 			Content.RootDirectory = "Content";
+
 		}
 
 		/// <summary>
@@ -85,6 +92,7 @@ namespace FlappyMonkey
 		/// </summary>
 		protected override void Initialize ()
 		{
+			State = GameState.Menu;
 			wallHeight = Math.Min (GraphicsDevice.Viewport.Height, MaxWallheight);
 			bottomGroundRect = new Rectangle (0, wallHeight + 1, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height - MaxWallheight);
 			player = new Player ();
@@ -120,6 +128,7 @@ namespace FlappyMonkey
 			clouds2.Initialize (Content, "clouds2", 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -(GamePhysics.WallSpeed + .5f), true);
 			bushes.Initialize (Content, "bushes", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -1, false, true);
 			buildings.Initialize (Content, "buildings", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -.5f, false, true);
+			Reset ();
 		}
 
 		public void Reset ()
@@ -161,25 +170,26 @@ namespace FlappyMonkey
 
 			//Update the player
 			var shouldFly = Toggled (); //currentTouches.Any() || currentKeyboardState.IsKeyDown (Keys.Space) || currentGamePadState.IsButtonDown(Buttons.A) ;
-			player.Update (gameTime, shouldFly, wallHeight + 1);
+			if (shouldFly && State == GameState.Menu)
+				State = GameState.Playing;
+			player.Update (gameTime, shouldFly, wallHeight + 1, State == GameState.Menu);
 
 
-			if (!player.Active) {
-				if (Toggled ())
-					Reset ();
-				return;
+		
+			if (State != GameState.Score){
+				ground.Update ();
+				buildings.Update ();
+				bushes.Update ();
+				clouds1.Update ();
+				clouds2.Update ();
 			}
 
-			ground.Update ();
-			buildings.Update ();
-			bushes.Update ();
-			clouds1.Update ();
-			clouds2.Update ();
+			if (State == GameState.Playing) {
+				UpdateWalls (gameTime);
 
-			UpdateWalls (gameTime);
-
-			// Update the collision
-			UpdateCollision ();
+				// Update the collision
+				UpdateCollision ();
+			}
 
 		}
 
@@ -257,6 +267,7 @@ namespace FlappyMonkey
 			foreach (var wall in walls.Where(x=> x.Collides(rectangle1))) {
 				player.Health = 0;
 				player.Active = false;
+				State = GameState.Score;
 			}
 
 			var points = walls.Sum (x => x.CollectPoints ());
@@ -265,6 +276,7 @@ namespace FlappyMonkey
 			if (rectangle1.Bottom >= wallHeight) {
 				player.Health = 0;
 				player.Active = false;
+				State = GameState.Score;
 			}
 		}
 
@@ -305,7 +317,8 @@ namespace FlappyMonkey
 
 
 //			// Draw the score
-			spriteBatch.DrawString (font, score.ToString (), new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.Width / 2, GraphicsDevice.Viewport.TitleSafeArea.Height / 4), Color.White, 0, Vector2.Zero, 4f, SpriteEffects.None, 0);
+			if(State == GameState.Playing)
+				spriteBatch.DrawString (font, score.ToString (), new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.Width / 2, GraphicsDevice.Viewport.TitleSafeArea.Height / 4), Color.White, 0, Vector2.Zero, 4f, SpriteEffects.None, 0);
 //			// Draw the player health
 //			spriteBatch.DrawString (font, "health: " + player.Health, new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
 
