@@ -53,7 +53,7 @@ namespace FlappyMonkey
 		ParallaxingBackground bushes;
 		ParallaxingBackground clouds1;
 		ParallaxingBackground clouds2;
-		Texture2D mainBackground, wallTexture, topWallCapTexture, bottomWallCapTexture, playerTexture, groundBottom;
+		Texture2D wallTexture, topWallCapTexture, bottomWallCapTexture, playerTexture, groundBottom, gameOverTexture;
 		List<Wall> walls = new List<Wall> ();
 		// The rate at which the walls appear
 		double wallSpanTime, previousWallSpawnTime;
@@ -129,6 +129,8 @@ namespace FlappyMonkey
 			bushes.Initialize (Content, "bushes", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -1, false, true);
 			buildings.Initialize (Content, "buildings", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -.5f, false, true);
 
+			gameOverTexture = Content.Load<Texture2D> ("gameOver");
+			gameOverPosition.X = (GraphicsDevice.Viewport.Width - (gameOverTexture.Width * 4)) / 2;
 			Number.Initialize (Content);
 			Reset ();
 		}
@@ -174,6 +176,8 @@ namespace FlappyMonkey
 			var shouldFly = Toggled (); //currentTouches.Any() || currentKeyboardState.IsKeyDown (Keys.Space) || currentGamePadState.IsButtonDown(Buttons.A) ;
 			if (shouldFly && State == GameState.Menu)
 				State = GameState.Playing;
+			else if (shouldFly && State == GameState.Score)
+				shouldFly = false;
 			player.Update (gameTime, shouldFly, wallHeight + 1, State == GameState.Menu);
 
 
@@ -188,9 +192,10 @@ namespace FlappyMonkey
 
 			if (State == GameState.Playing) {
 				UpdateWalls (gameTime);
-
 				// Update the collision
 				UpdateCollision ();
+			} else if (State == GameState.Score) {
+				UpdateGameOver (gameTime);
 			}
 
 		}
@@ -267,19 +272,37 @@ namespace FlappyMonkey
 
 			//If it collides with a wall, you die
 			foreach (var wall in walls.Where(x=> x.Collides(rectangle1))) {
-				player.Health = 0;
-				player.Active = false;
-				State = GameState.Score;
+				gameOver ();
 			}
 
 			var points = walls.Sum (x => x.CollectPoints ());
 			score += points;
 
 			if (rectangle1.Bottom >= wallHeight) {
-				player.Health = 0;
-				player.Active = false;
-				State = GameState.Score;
+				gameOver ();
 			}
+		}
+		double gameOverTimer = 0;
+		Vector2 gameOverPosition = Vector2.Zero;
+		double gameOverAnimationDuration = 500;
+		void gameOver()
+		{
+			gameOverTimer = 0;
+			player.Health = 0;
+			player.Active = false;
+			State = GameState.Score;
+		}
+
+		void UpdateGameOver(GameTime gameTime)
+		{
+			if (gameOverTimer > gameOverAnimationDuration + 10)
+				return;
+			var sin = (float)Math.Sin (gameOverTimer * .7 * Math.PI / gameOverAnimationDuration);
+			Console.WriteLine (sin);
+			var y = (int)((GraphicsDevice.Viewport.Height/3) * sin);
+
+			gameOverPosition.Y = y;
+			gameOverTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
 		}
 
 		/// <summary>
@@ -291,8 +314,8 @@ namespace FlappyMonkey
 		{
 			GraphicsDevice.Clear (Color.CornflowerBlue);
 			// Start drawing
-			spriteBatch.Begin ();
-
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
+				SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
 			#if WINDOWS_PHONE
 			spriteBatch.Draw(mainBackground, Vector2.Zero, Color.White);
 			#endif
@@ -314,13 +337,16 @@ namespace FlappyMonkey
 
 			clouds2.Draw (spriteBatch);
 
-			spriteBatch.Draw (groundBottom, bottomGroundRect, Color.Wheat);
+			spriteBatch.Draw (groundBottom, bottomGroundRect, Color.White);
 			ground.Draw (spriteBatch);
 
 
 //			// Draw the score
 			if (State == GameState.Playing)
-				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0),3);
+				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), 3);
+			else if (State == GameState.Score) {
+				spriteBatch.Draw (gameOverTexture, gameOverPosition,null,null,null,0,new Vector2(4,4), Color.White);
+			}
 //			// Draw the player health
 //			spriteBatch.DrawString (font, "health: " + player.Health, new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
 

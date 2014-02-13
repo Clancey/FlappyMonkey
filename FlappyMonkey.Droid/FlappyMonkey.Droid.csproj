@@ -16,6 +16,8 @@
     <AssemblyName>FlappyMonkey.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -114,6 +116,39 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Content\monkey.png">
       <Link>Assets\Content\monkey.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\0.png">
+      <Link>Assets\Content\0.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\1.png">
+      <Link>Assets\Content\1.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\2.png">
+      <Link>Assets\Content\2.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\3.png">
+      <Link>Assets\Content\3.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\4.png">
+      <Link>Assets\Content\4.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\5.png">
+      <Link>Assets\Content\5.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\6.png">
+      <Link>Assets\Content\6.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\7.png">
+      <Link>Assets\Content\7.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\8.png">
+      <Link>Assets\Content\8.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\9.png">
+      <Link>Assets\Content\9.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\gameOver.png">
+      <Link>Assets\Content\gameOver.png</Link>
     </AndroidAsset>
   </ItemGroup>
 </Project>
