@@ -130,7 +130,7 @@ namespace FlappyMonkey
 			buildings.Initialize (Content, "buildings", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -.5f, false, true);
 
 			gameOverTexture = Content.Load<Texture2D> ("gameOver");
-			gameOverPosition.X = (GraphicsDevice.Viewport.Width - (gameOverTexture.Width * 4)) / 2;
+			gameOverPosition.X = (GraphicsDevice.Viewport.Width - (gameOverTexture.Width * 8)) / 2;
 			Number.Initialize (Content);
 			Reset ();
 		}
@@ -345,7 +345,7 @@ namespace FlappyMonkey
 			if (State == GameState.Playing)
 				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), 3);
 			else if (State == GameState.Score) {
-				spriteBatch.Draw (gameOverTexture, gameOverPosition,null,null,null,0,new Vector2(4,4), Color.White);
+				spriteBatch.Draw (gameOverTexture, gameOverPosition,null,null,null,0,new Vector2(8,8), Color.White);
 			}
 //			// Draw the player health
 //			spriteBatch.DrawString (font, "health: " + player.Health, new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
