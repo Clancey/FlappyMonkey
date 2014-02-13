@@ -303,7 +303,7 @@ namespace FlappyMonkey
 				return;
 			var sin = (float)Math.Sin (gameOverTimer * .7 * Math.PI / gameOverAnimationDuration);
 			Console.WriteLine (sin);
-			var y = (int)((GraphicsDevice.Viewport.Height/3) * sin);
+			var y = (int)((GraphicsDevice.Viewport.Height/2) * sin);
 
 			gameOverPosition.Y = y;
 			gameOverTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
@@ -346,9 +346,10 @@ namespace FlappyMonkey
 
 
 //			// Draw the score
-			if (State == GameState.Playing)
+			if (State != GameState.Menu)
 				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), 3);
-			else if (State == GameState.Score) {
+
+			if (State == GameState.Score) {
 				spriteBatch.Draw (gameOverTexture, gameOverPosition,null,null,null,0,new Vector2(8,8), Color.White);
 			}
 //			// Draw the player health
