@@ -137,6 +137,7 @@ namespace FlappyMonkey
 
 		public void Reset ()
 		{
+			State = GameState.Menu;
 			wallSpanTime = 2000;
 			player.Active = true;
 			player.Health = 1;
@@ -196,6 +197,9 @@ namespace FlappyMonkey
 				UpdateCollision ();
 			} else if (State == GameState.Score) {
 				UpdateGameOver (gameTime);
+				if (gameOverAnimationDuration <= gameOverTimer && Toggled ())
+					Reset ();
+
 			}
 
 		}
