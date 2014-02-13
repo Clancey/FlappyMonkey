@@ -56,6 +56,7 @@
     <Compile Include="GamePhysics.cs" />
     <Compile Include="ParallaxingBackground.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Number.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="..\Content\pipe.png">
@@ -94,6 +95,39 @@
     </BundleResource>
     <BundleResource Include="..\Content\clouds2.png">
       <Link>Resources\Content\clouds2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\gameOver.png">
+      <Link>Resources\Content\gameOver.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\0.png">
+      <Link>Resources\Content\0.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\1.png">
+      <Link>Resources\Content\1.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\2.png">
+      <Link>Resources\Content\2.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\3.png">
+      <Link>Resources\Content\3.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\4.png">
+      <Link>Resources\Content\4.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\5.png">
+      <Link>Resources\Content\5.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\6.png">
+      <Link>Resources\Content\6.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\7.png">
+      <Link>Resources\Content\7.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\8.png">
+      <Link>Resources\Content\8.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\9.png">
+      <Link>Resources\Content\9.png</Link>
     </BundleResource>
   </ItemGroup>
   <ItemGroup>

@@ -50,6 +50,7 @@
     <Compile Include="ParallaxingBackground.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Wall.cs" />
+    <Compile Include="Number.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

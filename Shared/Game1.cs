@@ -128,6 +128,8 @@ namespace FlappyMonkey
 			clouds2.Initialize (Content, "clouds2", 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -(GamePhysics.WallSpeed + .5f), true);
 			bushes.Initialize (Content, "bushes", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -1, false, true);
 			buildings.Initialize (Content, "buildings", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -.5f, false, true);
+
+			Number.Initialize (Content);
 			Reset ();
 		}
 
@@ -317,8 +319,8 @@ namespace FlappyMonkey
 
 
 //			// Draw the score
-			if(State == GameState.Playing)
-				spriteBatch.DrawString (font, score.ToString (), new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.Width / 2, GraphicsDevice.Viewport.TitleSafeArea.Height / 4), Color.White, 0, Vector2.Zero, 4f, SpriteEffects.None, 0);
+			if (State == GameState.Playing)
+				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0),3);
 //			// Draw the player health
 //			spriteBatch.DrawString (font, "health: " + player.Health, new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
 
