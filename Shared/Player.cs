@@ -16,21 +16,21 @@ namespace FlappyMonkey
 		// Amount of hit points that player has
 		public int Health;
 		// Get the width of the player ship
-		public int Width {
-			get { return Texture.Width; }
-		}
+		public int Width {get;set;}
 		// Get the height of the player ship
-		public int Height {
-			get { return Texture.Height; }
-		}
+		public int Height {get;set;}
 		// Animation representing the player
 		public Texture2D Texture;
 		Vector2 DrawOffset;
+		Vector2 Origin;
+		float Scale = 1f;
 		// Initialize the player
-		public void Initialize (Texture2D animation, Vector2 position)
+		public void Initialize (Texture2D animation, Vector2 position, float scale = 1f)
 		{
 			Texture = animation;
-
+			Scale = scale;
+			Width = (int)(Texture.Width * scale);
+			Height = (int)(Texture.Height * scale);
 			// Set the starting position of the player around the middle of the screen and to the back
 			StartLocation = Position = position;
 
@@ -39,8 +39,8 @@ namespace FlappyMonkey
 
 			// Set the player health
 			Health = 1;
-
-			DrawOffset = new Vector2 (Width / 2, Height / 2);
+			Origin = new Vector2 (Texture.Width / 2, Texture.Height / 2);
+			DrawOffset = new Vector2 (Width / 2 , Height / 2);
 		}
 
 		double jumpTimer = GamePhysics.PlayerJumpLength;
@@ -123,7 +123,7 @@ namespace FlappyMonkey
 		public void Draw (SpriteBatch spriteBatch)
 		{
 			//spriteBatch.Draw(Texture, Position, Color.White);
-			spriteBatch.Draw (Texture, Position + DrawOffset, null, Color.White, rotation, DrawOffset, 1f, SpriteEffects.None, 0);
+			spriteBatch.Draw (Texture, Position + DrawOffset, null, Color.White, rotation, Origin, Scale, SpriteEffects.None, 0);
 		}
 
 		const float TurnSpeed = 0.50f;
