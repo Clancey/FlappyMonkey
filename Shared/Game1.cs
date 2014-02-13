@@ -269,10 +269,7 @@ namespace FlappyMonkey
 		{
 			// Use the Rectangle's built-in intersect function to 
 			// determine if two objects are overlapping
-			var rectangle1 = new Rectangle ((int)player.Position.X,
-				                 (int)player.Position.Y,
-				                 player.Width,
-				                 player.Height);
+			var rectangle1 = player.Rectangle;
 
 			//If it collides with a wall, you die
 			foreach (var wall in walls.Where(x=> x.Collides(rectangle1))) {
@@ -337,6 +334,8 @@ namespace FlappyMonkey
 
 
 			// Draw the Player
+			//uncomment to draw the hitbox.
+			//spriteBatch.Draw (groundBottom, player.Rectangle, Color.Red);
 			player.Draw (spriteBatch);
 
 			clouds2.Draw (spriteBatch);

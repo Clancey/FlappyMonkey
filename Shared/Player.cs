@@ -43,6 +43,12 @@ namespace FlappyMonkey
 			DrawOffset = new Vector2 (Width / 2 , Height / 2);
 		}
 
+		public Rectangle Rectangle
+		{
+			//Make it a tad bit skinnier for a better hitbox
+			get{ return new Rectangle ((int)Position.X, (int)Position.Y, (int)(Width *.9), Height); }
+		}
+
 		double jumpTimer = GamePhysics.PlayerJumpLength;
 		double fallTimer = 0;
 		bool isJumping = false;
