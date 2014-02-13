@@ -23,7 +23,7 @@ namespace FlappyMonkey
 			if (textures != null)
 				return;
 			textures = new Dictionary<string, Texture2D> ();
-			Enumerable.Range (0, 9).Select (x => x.ToString ()).ToList ().ForEach (x => textures.Add (x, content.Load<Texture2D> (x)));
+			Enumerable.Range (0, 10).Select (x => x.ToString ()).ToList ().ForEach (x => textures.Add (x, content.Load<Texture2D> (x)));
 
 		}
 		const int padding = 5;
