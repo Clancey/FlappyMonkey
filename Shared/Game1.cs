@@ -296,6 +296,7 @@ namespace FlappyMonkey
 
 		void UpdateGameOver(GameTime gameTime)
 		{
+			gameOverTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
 			if (gameOverTimer > gameOverAnimationDuration + 10)
 				return;
 			var sin = (float)Math.Sin (gameOverTimer * .7 * Math.PI / gameOverAnimationDuration);
@@ -303,7 +304,6 @@ namespace FlappyMonkey
 			var y = (int)((GraphicsDevice.Viewport.Height/2) * sin);
 
 			gameOverPosition.Y = y;
-			gameOverTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
 		}
 
 		/// <summary>
