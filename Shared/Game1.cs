@@ -310,7 +310,6 @@ namespace FlappyMonkey
 			if (gameOverTimer > gameOverAnimationDuration + 10)
 				return;
 			var sin = (float)Math.Sin (gameOverTimer * .7 * Math.PI / gameOverAnimationDuration);
-			Console.WriteLine (sin);
 			var y = (int)((GraphicsDevice.Viewport.Height/3) * sin);
 			gameOverPosition.Y = y;
 			scoreBoardRect.Y = GraphicsDevice.Viewport.Height - y - scoreBoardRect.Height;
