@@ -151,5 +151,14 @@
     <AndroidAsset Include="..\Content\player.png">
       <Link>Assets\Content\player.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\Content\highScore.png">
+      <Link>Assets\Content\highScore.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\score.png">
+      <Link>Assets\Content\score.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\scoreBackground.png">
+      <Link>Assets\Content\scoreBackground.png</Link>
+    </AndroidAsset>
   </ItemGroup>
 </Project>

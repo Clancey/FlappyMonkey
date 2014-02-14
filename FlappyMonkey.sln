@@ -130,6 +130,6 @@ Global
 		{D531C113-DE6F-436A-BFAA-E59DCD3BF63A} = {8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = FlappyMonkey.iOS\FlappyMonkey.iOS.csproj
+		StartupItem = FlappyMonkey.Droid\FlappyMonkey.Ouya.csproj
 	EndGlobalSection
 EndGlobal
