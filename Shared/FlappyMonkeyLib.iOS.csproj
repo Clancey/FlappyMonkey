@@ -9,7 +9,7 @@
     <RootNamespace>FlappyMonkey</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>FlappyMonkey</AssemblyName>
-    <newfilesearch>OnLoad</newfilesearch>
+    <newfilesearch>OnLoadAutoInsert</newfilesearch>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
@@ -59,6 +59,7 @@
     <Compile Include="ParallaxingBackground.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Number.cs" />
+    <Compile Include="TopScore.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="..\Content\pipe.png">
@@ -130,6 +131,15 @@
     </BundleResource>
     <BundleResource Include="..\Content\9.png">
       <Link>Resources\Content\9.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\highScore.png">
+      <Link>Resources\Content\highScore.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\score.png">
+      <Link>Resources\Content\score.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\scoreBackground.png">
+      <Link>Resources\Content\scoreBackground.png</Link>
     </BundleResource>
   </ItemGroup>
   <ItemGroup>

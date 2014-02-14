@@ -53,7 +53,8 @@ namespace FlappyMonkey
 		ParallaxingBackground bushes;
 		ParallaxingBackground clouds1;
 		ParallaxingBackground clouds2;
-		Texture2D wallTexture, topWallCapTexture, bottomWallCapTexture, playerTexture, groundBottom, gameOverTexture;
+		Texture2D wallTexture, topWallCapTexture, bottomWallCapTexture, 
+			playerTexture, groundBottom, gameOverTexture, scoreBoardTexture,scoreTexture, highScoreTexture;
 		List<Wall> walls = new List<Wall> ();
 		// The rate at which the walls appear
 		double wallSpanTime, previousWallSpawnTime;
@@ -66,6 +67,7 @@ namespace FlappyMonkey
 		bool accelActive;
 		int wallHeight;
 		Rectangle bottomGroundRect;
+		int scoreBoardPadding = 0;
 
 		#endregion
 
@@ -103,7 +105,7 @@ namespace FlappyMonkey
 			clouds2 = new ParallaxingBackground ();
 			base.Initialize ();
 		}
-
+		int scoreScale = 3;
 		/// <summary>
 		/// Load your graphics content.
 		/// </summary>
@@ -129,9 +131,16 @@ namespace FlappyMonkey
 			bushes.Initialize (Content, "bushes", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -1, false, true);
 			buildings.Initialize (Content, "buildings", wallHeight, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, -.5f, false, true);
 
-			gameOverTexture = Content.Load<Texture2D> ("gameOver");
-			gameOverPosition.X = (GraphicsDevice.Viewport.Width - (gameOverTexture.Width * 8)) / 2;
 			Number.Initialize (Content);
+			gameOverTexture = Content.Load<Texture2D> ("gameOver");
+			scoreBoardTexture = Content.Load<Texture2D> ("scoreBackground");
+			highScoreTexture = Content.Load<Texture2D> ("highScore");
+			scoreTexture = Content.Load<Texture2D> ("score");
+			gameOverPosition.X = (GraphicsDevice.Viewport.Width - (gameOverTexture.Width * 8)) / 2;
+			scoreBoardRect.X = (int)gameOverPosition.X;
+			scoreBoardRect.Width = gameOverTexture.Width * 8;
+			scoreBoardPadding = gameOverTexture.Height;
+			scoreBoardRect.Height = (scoreBoardPadding * 6) + highScoreTexture.Height + scoreTexture.Height + (int)(Number.Height * scoreScale * 2);
 			Reset ();
 		}
 
@@ -285,9 +294,11 @@ namespace FlappyMonkey
 		}
 		double gameOverTimer = 0;
 		Vector2 gameOverPosition = Vector2.Zero;
+		Rectangle scoreBoardRect = Rectangle.Empty;
 		double gameOverAnimationDuration = 500;
 		void gameOver()
 		{
+			TopScore.Current = score;
 			gameOverTimer = 0;
 			player.Health = 0;
 			player.Active = false;
@@ -301,9 +312,9 @@ namespace FlappyMonkey
 				return;
 			var sin = (float)Math.Sin (gameOverTimer * .7 * Math.PI / gameOverAnimationDuration);
 			Console.WriteLine (sin);
-			var y = (int)((GraphicsDevice.Viewport.Height/2) * sin);
-
+			var y = (int)((GraphicsDevice.Viewport.Height/3) * sin);
 			gameOverPosition.Y = y;
+			scoreBoardRect.Y = GraphicsDevice.Viewport.Height - y - scoreBoardRect.Height;
 		}
 
 		/// <summary>
@@ -345,11 +356,29 @@ namespace FlappyMonkey
 
 
 //			// Draw the score
-			if (State != GameState.Menu)
-				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), 3);
+			if (State == GameState.Playing)
+				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, GraphicsDevice.Viewport.TitleSafeArea.Height / 4, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), scoreScale);
 
 			if (State == GameState.Score) {
 				spriteBatch.Draw (gameOverTexture, gameOverPosition,null,null,null,0,new Vector2(8,8), Color.White);
+
+				spriteBatch.Draw (scoreBoardTexture, null,scoreBoardRect,null,null,0,new Vector2(1,1), Color.White);
+
+				var y = scoreBoardRect.Top + scoreBoardPadding;
+				var x = (GraphicsDevice.Viewport.TitleSafeArea.Width - scoreTexture.Width) / 2;
+				spriteBatch.Draw (scoreTexture, new Vector2(x,y), Color.White);
+
+				y += scoreTexture.Height + scoreBoardPadding;
+				Number.Draw (spriteBatch, score, Number.Alignment.Center, new Rectangle (0, y, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), scoreScale);
+
+				y += (Number.Height * scoreScale) + scoreBoardPadding;
+				x = (GraphicsDevice.Viewport.TitleSafeArea.Width - highScoreTexture.Width) / 2;
+				spriteBatch.Draw (highScoreTexture, new Vector2(x,y), Color.White);
+
+				y += highScoreTexture.Height + scoreBoardPadding;
+				Number.Draw (spriteBatch, TopScore.Current, Number.Alignment.Center, new Rectangle (0, y, GraphicsDevice.Viewport.TitleSafeArea.Width, 0), scoreScale);
+
+
 			}
 //			// Draw the player health
 //			spriteBatch.DrawString (font, "health: " + player.Health, new Vector2 (GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);

@@ -14,7 +14,7 @@
     <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
     <AssemblyName>FlappyMonkeyLib.Droid</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <newfilesearch>OnLoad</newfilesearch>
+    <newfilesearch>OnLoadAutoInsert</newfilesearch>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
@@ -53,6 +53,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Number.cs" />
+    <Compile Include="TopScore.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>

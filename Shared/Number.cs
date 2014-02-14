@@ -16,6 +16,10 @@ namespace FlappyMonkey
 			Right
 		}
 
+		public static int Height {
+			get{ return textures ["0"].Height;}
+		}
+
 		static Dictionary<string,Texture2D> textures;
 
 		public static void Initialize (ContentManager content)
