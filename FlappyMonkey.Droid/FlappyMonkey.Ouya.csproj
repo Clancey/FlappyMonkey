@@ -24,7 +24,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>bin\Ouya\Debug</OutputPath>
     <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__OUYA__</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Ouya\Release</OutputPath>
     <DefineConstants>__MOBILE__;__ANDROID__;__OUYA__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,14 +46,14 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="OpenTK" />
+    <Reference Include="Ouya.Console.Api">
+      <HintPath>..\Libs\Ouya\Ouya.Console.Api.dll</HintPath>
+    </Reference>
     <Reference Include="Lidgren.Network">
       <HintPath>..\Libs\Ouya\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
       <HintPath>..\Libs\Ouya\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Ouya.Console.Api">
-      <HintPath>..\Libs\Ouya\Ouya.Console.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
