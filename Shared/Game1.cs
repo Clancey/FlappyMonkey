@@ -326,13 +326,6 @@ namespace FlappyMonkey
 			// Start drawing
 			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, 
 				SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullNone);
-			#if WINDOWS_PHONE
-			spriteBatch.Draw(mainBackground, Vector2.Zero, Color.White);
-			#endif
-
-			#if MONOGAME
-			spriteBatch.Draw(mainBackground, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 1.3f, SpriteEffects.None, 0);
-			#endif
 
 			buildings.Draw (spriteBatch);
 			bushes.Draw (spriteBatch);
