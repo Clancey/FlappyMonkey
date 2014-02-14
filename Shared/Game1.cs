@@ -115,7 +115,7 @@ namespace FlappyMonkey
 			spriteBatch = new SpriteBatch (graphics.GraphicsDevice);
 			
 			// TODO: use this.Content to load your game content here eg.
-			playerTexture = Content.Load<Texture2D> ("monkey");
+			playerTexture = Content.Load<Texture2D> ("player");
 
 			player.Initialize (playerTexture, new Vector2 (graphics.GraphicsDevice.Viewport.Width / 3, graphics.GraphicsDevice.Viewport.Height / 2));
 			wallTexture = Content.Load<Texture2D> ("pipe");

@@ -74,9 +74,6 @@
     <BundleResource Include="..\Content\logo.png">
       <Link>Resources\Content\logo.png</Link>
     </BundleResource>
-    <BundleResource Include="..\Content\monkey.png">
-      <Link>Resources\Content\monkey.png</Link>
-    </BundleResource>
     <BundleResource Include="..\Content\ground.png">
       <Link>Resources\Content\ground.png</Link>
     </BundleResource>
@@ -136,6 +133,9 @@
     </BundleResource>
     <BundleResource Include="..\Content\scoreBackground.png">
       <Link>Resources\Content\scoreBackground.png</Link>
+    </BundleResource>
+    <BundleResource Include="..\Content\player.png">
+      <Link>Resources\Content\player.png</Link>
     </BundleResource>
   </ItemGroup>
   <ItemGroup>

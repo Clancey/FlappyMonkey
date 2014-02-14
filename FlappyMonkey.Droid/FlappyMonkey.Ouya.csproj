@@ -115,9 +115,6 @@
     <AndroidAsset Include="..\Content\ground.png">
       <Link>Assets\Content\ground.png</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\Content\monkey.png">
-      <Link>Assets\Content\monkey.png</Link>
-    </AndroidAsset>
     <AndroidAsset Include="..\Content\0.png">
       <Link>Assets\Content\0.png</Link>
     </AndroidAsset>
@@ -150,6 +147,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\Content\gameOver.png">
       <Link>Assets\Content\gameOver.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\Content\player.png">
+      <Link>Assets\Content\player.png</Link>
     </AndroidAsset>
   </ItemGroup>
 </Project>

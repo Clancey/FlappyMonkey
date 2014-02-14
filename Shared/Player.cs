@@ -24,13 +24,15 @@ namespace FlappyMonkey
 		Vector2 DrawOffset;
 		Vector2 Origin;
 		float Scale = 1f;
+		//The height we want the player to always be
+		const int DesiredHeight = 72;
 		// Initialize the player
-		public void Initialize (Texture2D animation, Vector2 position, float scale = 1f)
+		public void Initialize (Texture2D animation, Vector2 position)
 		{
 			Texture = animation;
-			Scale = scale;
-			Width = (int)(Texture.Width * scale);
-			Height = (int)(Texture.Height * scale);
+			Scale = DesiredHeight / Texture.Height;
+			Width = (int)(Texture.Width * Scale);
+			Height = (int)(Texture.Height * Scale);
 			// Set the starting position of the player around the middle of the screen and to the back
 			StartLocation = Position = position;
 
