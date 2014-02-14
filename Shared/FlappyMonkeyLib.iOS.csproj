@@ -67,7 +67,6 @@
     <BundleResource Include="..\Content\pipeTopCap.png">
       <Link>Resources\Content\pipeTopCap.png</Link>
     </BundleResource>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="..\Content\gameFont.xnb">
       <Link>Resources\Content\gameFont.xnb</Link>
     </BundleResource>

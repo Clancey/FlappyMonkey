@@ -118,8 +118,9 @@
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Default.png" />
     <BundleResource Include="GameThumbnail.png" />
+    <BundleResource Include="Default-568h%402x.png" />
+    <BundleResource Include="Default%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
