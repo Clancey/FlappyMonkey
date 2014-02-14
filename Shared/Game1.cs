@@ -147,10 +147,10 @@ namespace FlappyMonkey
 		public void Reset ()
 		{
 			State = GameState.Menu;
-			wallSpanTime = 2000;
+			wallSpanTime = GamePhysics.StartWallSpawnRate;
 			player.Active = true;
 			player.Health = 1;
-			maxGap = 300;
+			maxGap = GamePhysics.MaximumGapSize;
 			score = 0;
 			walls.Clear ();
 
@@ -233,14 +233,13 @@ namespace FlappyMonkey
 			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space);
 		}
 
-		int maxGap = 400;
+		int maxGap;
 		const int MaxWallheight = 920;
 
 		private void AddWall ()
 		{
-			const int minGap = 214;
-			maxGap = MathHelper.Clamp (maxGap - 10, minGap, 400);
-			int gapSize = random.Next (minGap, maxGap);
+			maxGap = MathHelper.Clamp (maxGap - 10,  GamePhysics.MinimumGapSize,  GamePhysics.MaximumGapSize);
+			int gapSize = random.Next ( GamePhysics.MinimumGapSize, maxGap);
 			var gapY = random.Next (100, wallHeight - (gapSize + 100));
 			var wall = new Wall ();
 
@@ -258,7 +257,7 @@ namespace FlappyMonkey
 			if (previousWallSpawnTime > wallSpanTime) {
 				previousWallSpawnTime = 0;
 				wallSpanTime -= 200;
-				wallSpanTime = Math.Max (wallSpanTime, 2000);
+				wallSpanTime = Math.Max (wallSpanTime, GamePhysics.MinimumWallSpawnRate);
 				// Add an Enemy
 				AddWall ();
 			}
