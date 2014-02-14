@@ -46,6 +46,15 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="OpenTK" />
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\Libs\Ouya\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\Libs\Ouya\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ouya.Console.Api">
+      <HintPath>..\Libs\Ouya\Ouya.Console.Api.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
@@ -67,14 +76,6 @@
     <ProjectReference Include="..\Shared\FlappyMonkeyLib.Ouya.csproj">
       <Project>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</Project>
       <Name>FlappyMonkeyLib.Ouya</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
-      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
-      <Name>Lidgren.Network.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
