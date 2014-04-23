@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="OpenTK" />
-    <Reference Include="Lidgren.Network">
-      <HintPath>..\Libs\Ouya\Lidgren.Network.dll</HintPath>
-    </Reference>
     <Reference Include="Amazon.FireTV.GameController">
       <HintPath>..\Components\amazonfiretv-1.0\lib\android\Amazon.FireTV.GameController.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\Libs\FIRE\Lidgren.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\Libs\FIRE\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
   </ItemGroup>
@@ -67,7 +70,6 @@
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
-  <Import Project="..\Shared\FlappyMonkeyLib.projitems" Label="Shared" Condition="Exists('..\Shared\FlappyMonkeyLib.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Assets\Content\" />
@@ -151,18 +153,20 @@
     <AndroidAsset Include="..\Content\scoreBackground.png">
       <Link>Assets\Content\scoreBackground.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="FireContent\tapToFly.png">
+      <Link>Assets\Content\tapToFly.png</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="amazonfiretv">
-      <InstallationInProgress>True</InstallationInProgress>
       <Version>1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Fire.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Fire</Name>
+    <ProjectReference Include="..\Shared\FlappyMonkeyLib.Fire.csproj">
+      <Project>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</Project>
+      <Name>FlappyMonkeyLib.Fire</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
