@@ -55,7 +55,7 @@ namespace FlappyMonkey
 		ParallaxingBackground clouds2;
 		Texture2D wallTexture, topWallCapTexture, bottomWallCapTexture, 
 			playerTexture, groundBottom, gameOverTexture, scoreBoardTexture,scoreTexture, highScoreTexture;
-		List<Wall> walls = new List<Wall> ();
+		public List<Wall> walls = new List<Wall> ();
 		// The rate at which the walls appear
 		double wallSpanTime, previousWallSpawnTime;
 		// A random number generator
@@ -76,7 +76,7 @@ namespace FlappyMonkey
 		public Game1 ()
 		{
 			graphics = new GraphicsDeviceManager (this) {
-				#if __OUYA__
+				#if __OUYA__ || __FIRE__
 				SupportedOrientations = DisplayOrientation.LandscapeLeft |  DisplayOrientation.LandscapeRight,
 				#else 
 				SupportedOrientations = DisplayOrientation.Portrait,

@@ -16,19 +16,18 @@
     <AssemblyName>FlappyMonkey.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;</DefineConstants>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__FIRE__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -52,6 +51,9 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\Libs\Android\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Amazon.FireTV.GameController">
+      <HintPath>..\Components\amazonfiretv-1.0\lib\android\Amazon.FireTV.GameController.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
@@ -68,13 +70,8 @@
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
+  <Import Project="..\Shared\FlappyMonkeyLib.projitems" Label="Shared" Condition="Exists('..\Shared\FlappyMonkeyLib.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\FlappyMonkeyLib.Droid.csproj">
-      <Project>{17B491A8-291F-42FF-99CC-5846F5242101}</Project>
-      <Name>FlappyMonkeyLib.Droid</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\" />
   </ItemGroup>
@@ -157,5 +154,11 @@
     <AndroidAsset Include="..\Content\scoreBackground.png">
       <Link>Assets\Content\scoreBackground.png</Link>
     </AndroidAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="amazonfiretv">
+      <Version>1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>
