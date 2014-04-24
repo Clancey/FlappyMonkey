@@ -154,4 +154,10 @@
       <Link>Assets\Content\scoreBackground.png</Link>
     </AndroidAsset>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\FlappyMonkeyLib.Ouya.csproj">
+      <Project>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</Project>
+      <Name>FlappyMonkeyLib.Ouya</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
