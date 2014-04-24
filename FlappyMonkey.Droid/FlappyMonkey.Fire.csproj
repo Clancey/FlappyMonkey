@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC661CE3-71B2-4F37-8720-9C64936E5ED1}</ProjectGuid>
+    <ProjectGuid>{87430AED-367A-431F-8860-0381C91D9DF1}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>FlappyMonkey.Ouya</RootNamespace>
@@ -43,9 +43,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="OpenTK" />
-    <Reference Include="Amazon.FireTV.GameController">
-      <HintPath>..\Components\amazonfiretv-1.0\lib\android\Amazon.FireTV.GameController.dll</HintPath>
-    </Reference>
     <Reference Include="Lidgren.Network">
       <HintPath>..\Libs\FIRE\Lidgren.Network.dll</HintPath>
     </Reference>
@@ -53,6 +50,9 @@
       <HintPath>..\Libs\FIRE\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Amazon.FireTV.GameController">
+      <HintPath>..\Components\amazonfiretv-1.0\lib\android\Amazon.FireTV.GameController.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
@@ -165,7 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\FlappyMonkeyLib.Fire.csproj">
-      <Project>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</Project>
+      <Project>{58B3F31E-EE12-48B8-987F-D5CBB02BA4C7}</Project>
       <Name>FlappyMonkeyLib.Fire</Name>
     </ProjectReference>
   </ItemGroup>

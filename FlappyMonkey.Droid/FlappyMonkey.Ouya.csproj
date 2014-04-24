@@ -72,12 +72,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Shared\FlappyMonkeyLib.Ouya.csproj">
-      <Project>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</Project>
-      <Name>FlappyMonkeyLib.Ouya</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Assets\Content\" />
   </ItemGroup>
   <ItemGroup>

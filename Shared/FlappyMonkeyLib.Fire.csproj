@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D531C113-DE6F-436A-BFAA-E59DCD3BF63A}</ProjectGuid>
+    <ProjectGuid>{58B3F31E-EE12-48B8-987F-D5CBB02BA4C7}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>FlappyMonkey</RootNamespace>
@@ -21,7 +21,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Ouya\Debug</OutputPath>
-    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__OUYA__;</DefineConstants>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__FIRE__;__TV__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Ouya\Release</OutputPath>
-    <DefineConstants>__MOBILE__;__ANDROID__;__OUYA__;</DefineConstants>
+    <DefineConstants>__MOBILE__;__ANDROID__;__OUYA__;__FIRE__;__TV__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
