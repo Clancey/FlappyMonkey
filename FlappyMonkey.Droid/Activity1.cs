@@ -6,9 +6,6 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Microsoft.Xna.Framework;
-#if __FIRE__
-using Amazon.Device.GameController;
-#endif
 
 namespace FlappyMonkey
 {
