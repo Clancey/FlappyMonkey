@@ -31,6 +31,8 @@ namespace FlappyMonkey
 			GameController.Init (this);
 			#endif
 
+			TopScore.OnNewTopScore += HandleOnNewTopScore;
+
 			// Create our OpenGL view, and display it
 			Game1.Activity = this;
 			var g = new Game1 ();
@@ -49,6 +51,21 @@ namespace FlappyMonkey
 			}
 
 			return handled || base.OnGenericMotionEvent(e);
+		}
+
+		int notificationId = 0;
+		void HandleOnNewTopScore (int oldScore, int newScore)
+		{
+			#if __FIRE__
+			var b = new Amazon.Device.Notification.AmazonNotification.Builder(this);
+			b.SetSmallIcon(FlappyMonkey.Ouya.Resource.Drawable.trophy);
+			b.SetContentTitle("New Top Score! " + newScore);
+			b.SetContentText("You've just beat the old score of " + oldScore);
+			b.SetType(Amazon.Device.Notification.BuilderType.Info);
+
+			var m = Amazon.Device.Notification.AmazonNotificationManager.FromContext(this);
+			m.Notify(notificationId++, b.Build());
+			#endif
 		}
 
 		public override bool OnKeyUp (Keycode keyCode, KeyEvent e)

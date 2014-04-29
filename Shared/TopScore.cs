@@ -12,6 +12,9 @@ namespace FlappyMonkey
 			current = getScore ();
 		}
 
+		public delegate void NewTopScoreDelegate (int oldScore,int newScore);
+		public static event NewTopScoreDelegate OnNewTopScore;
+
 		static int current;
 
 		public static int Current {
@@ -21,6 +24,11 @@ namespace FlappyMonkey
 			set {
 				if (value <= current)
 					return;
+
+				var evt = OnNewTopScore;
+				if (evt != null)
+					evt (current, value);
+
 				current = value;
 				saveScore (current);
 			}
