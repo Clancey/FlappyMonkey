@@ -59,8 +59,8 @@ namespace FlappyMonkey
 			#if __FIRE__
 			var b = new Amazon.Device.Notification.AmazonNotification.Builder(this);
 			b.SetSmallIcon(FlappyMonkey.Ouya.Resource.Drawable.trophy);
-			b.SetContentTitle("New Top Score! " + newScore);
-			b.SetContentText("You've just beat the old score of " + oldScore);
+			b.SetContentTitle("New Top Score: " + newScore + "!");
+			b.SetContentText("Congratulations!  You've just beat the old top score of " + oldScore + " with a new top score of " + newScore + "!");
 			b.SetType(Amazon.Device.Notification.BuilderType.Info);
 
 			var m = Amazon.Device.Notification.AmazonNotificationManager.FromContext(this);
