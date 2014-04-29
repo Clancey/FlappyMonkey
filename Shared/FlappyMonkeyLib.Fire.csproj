@@ -50,6 +50,9 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>..\Libs\Ouya\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Amazon.FireTV.GameController">
+      <HintPath>..\Components\amazonfiretv-1.0\lib\android\Amazon.FireTV.GameController.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -66,5 +69,12 @@
     <None Include="Resources\Default-568h%402x.png">
       <Visible>False</Visible>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="amazonfiretv">
+      <InstallationInProgress>True</InstallationInProgress>
+      <Version>1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

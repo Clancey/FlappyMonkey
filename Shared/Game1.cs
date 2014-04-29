@@ -170,7 +170,7 @@ namespace FlappyMonkey
 		protected override void Update (GameTime gameTime)
 		{
 			base.Update (gameTime);
-
+					
 			// Save the previous state of the keyboard and game pad so we can determinesingle key/button presses
 			previousGamePadState = currentGamePadState;
 			previousKeyboardState = currentKeyboardState;
@@ -230,7 +230,17 @@ namespace FlappyMonkey
 
 		bool Toggled ()
 		{
-			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space);
+			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space) || AmazonToggled();
+		}
+
+		bool AmazonToggled()
+		{
+			#if __FIRE__
+			if (Toggled(Keys.Enter))
+				return true;
+			#endif
+
+			return false;
 		}
 
 		int maxGap;
