@@ -171,6 +171,10 @@ namespace FlappyMonkey
 		{
 			base.Update (gameTime);
 
+			#if __FIRE__
+			Amazon.Device.GameController.GameController.StartFrame ();
+			#endif
+
 			// Save the previous state of the keyboard and game pad so we can determinesingle key/button presses
 			previousGamePadState = currentGamePadState;
 			previousKeyboardState = currentKeyboardState;
@@ -230,7 +234,33 @@ namespace FlappyMonkey
 
 		bool Toggled ()
 		{
-			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space);
+			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space) || AmazonToggled();
+		}
+
+		bool AmazonToggled()
+		{
+			#if __FIRE__
+
+			if (Toggled(Keys.Enter))
+				return true;
+
+			Amazon.Device.GameController.GameController gameController = null;
+
+
+			try {
+				gameController = Amazon.Device.GameController.GameController.GetControllerByPlayer (0);
+			}
+			catch (Exception) {
+			}
+
+			if (gameController != null) {
+				if (gameController.WasButtonPressed (Amazon.Device.GameController.GameControllerButton.DPadCenter)) {
+					return true;
+				}
+			}
+			#endif
+
+			return false;
 		}
 
 		int maxGap;

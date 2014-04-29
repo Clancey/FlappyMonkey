@@ -6,6 +6,9 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Microsoft.Xna.Framework;
+#if __FIRE__
+using Amazon.Device.GameController;
+#endif
 
 namespace FlappyMonkey
 {
@@ -24,12 +27,54 @@ namespace FlappyMonkey
 		{
 			base.OnCreate (bundle);
 
+			#if __FIRE__
+			GameController.Init (this);
+			#endif
+
 			// Create our OpenGL view, and display it
 			Game1.Activity = this;
 			var g = new Game1 ();
 			SetContentView (g.Window);
 			g.Run ();
 		}
+
+		#if __FIRE__
+		public override bool OnGenericMotionEvent (MotionEvent e)
+		{
+			Console.WriteLine ("OnGenericMotionEvent");
+			var handled = false;
+			try {
+				handled = GameController.OnGenericMotionEvent(e);
+			} catch (GameController.DeviceNotFoundException ex) {
+			}
+
+			return handled || base.OnGenericMotionEvent(e);
+		}
+
+		public override bool OnKeyUp (Keycode keyCode, KeyEvent e)
+		{
+			Console.WriteLine ("OnKeyUp: " + keyCode);
+			var handled = false;
+			try {
+				handled = GameController.OnKeyUp((int)keyCode, e);
+			}
+			catch (GameController.DeviceNotFoundException ex) {
+			}
+			return handled || base.OnKeyUp(keyCode, e);
+		}
+
+		public override bool OnKeyDown (Keycode keyCode, KeyEvent e)
+		{
+			Console.WriteLine ("OnKeyDown: " + keyCode);
+			var handled = false;
+			try {
+				handled = GameController.OnKeyDown((int)keyCode, e);
+			}
+			catch (GameController.DeviceNotFoundException ex) {
+			}
+			return handled || base.OnKeyDown(keyCode, e);
+		}
+		#endif
 	}
 }
 
