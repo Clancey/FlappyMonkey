@@ -27,10 +27,6 @@ namespace FlappyMonkey
 		{
 			base.OnCreate (bundle);
 
-			#if __FIRE__
-			GameController.Init (this);
-			#endif
-
 			TopScore.OnNewTopScore += HandleOnNewTopScore;
 
 			// Create our OpenGL view, and display it
@@ -41,19 +37,9 @@ namespace FlappyMonkey
 		}
 
 		#if __FIRE__
-		public override bool OnGenericMotionEvent (MotionEvent e)
-		{
-			Console.WriteLine ("OnGenericMotionEvent");
-			var handled = false;
-			try {
-				handled = GameController.OnGenericMotionEvent(e);
-			} catch (GameController.DeviceNotFoundException ex) {
-			}
-
-			return handled || base.OnGenericMotionEvent(e);
-		}
-
 		int notificationId = 0;
+		#endif
+
 		void HandleOnNewTopScore (int oldScore, int newScore)
 		{
 			#if __FIRE__
@@ -67,31 +53,6 @@ namespace FlappyMonkey
 			m.Notify(notificationId++, b.Build());
 			#endif
 		}
-
-		public override bool OnKeyUp (Keycode keyCode, KeyEvent e)
-		{
-			Console.WriteLine ("OnKeyUp: " + keyCode);
-			var handled = false;
-			try {
-				handled = GameController.OnKeyUp((int)keyCode, e);
-			}
-			catch (GameController.DeviceNotFoundException ex) {
-			}
-			return handled || base.OnKeyUp(keyCode, e);
-		}
-
-		public override bool OnKeyDown (Keycode keyCode, KeyEvent e)
-		{
-			Console.WriteLine ("OnKeyDown: " + keyCode);
-			var handled = false;
-			try {
-				handled = GameController.OnKeyDown((int)keyCode, e);
-			}
-			catch (GameController.DeviceNotFoundException ex) {
-			}
-			return handled || base.OnKeyDown(keyCode, e);
-		}
-		#endif
 	}
 }
 
