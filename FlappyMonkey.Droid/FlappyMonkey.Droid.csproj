@@ -16,8 +16,6 @@
     <AssemblyName>FlappyMonkey.Droid</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,13 +66,8 @@
     <AndroidResource Include="Resources\drawable\Splash.png" />
     <AndroidResource Include="Resources\values\Styles.xml" />
   </ItemGroup>
+  <Import Project="..\Shared\FlappyMonkey.Shared.projitems" Label="Shared" Condition="Exists('..\Shared\FlappyMonkey.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\FlappyMonkeyLib.Droid.csproj">
-      <Project>{17B491A8-291F-42FF-99CC-5846F5242101}</Project>
-      <Name>FlappyMonkeyLib.Droid</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\" />
   </ItemGroup>

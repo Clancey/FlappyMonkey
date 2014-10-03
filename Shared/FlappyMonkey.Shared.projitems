@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{42FE0C01-5BE7-4818-93E1-A36BDCD962C8}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FlappyMonkey.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GamePhysics.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Number.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParallaxingBackground.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Player.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TopScore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Wall.cs" />
+  </ItemGroup>
+</Project>
