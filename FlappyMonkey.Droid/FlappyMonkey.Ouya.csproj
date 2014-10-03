@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Ouya\Debug</OutputPath>
-    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__OUYA__</DefineConstants>
+    <DefineConstants>DEBUG;__MOBILE__;__ANDROID__;__OUYA__;__TV__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
@@ -32,7 +32,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Ouya\Release</OutputPath>
-    <DefineConstants>__MOBILE__;__ANDROID__;__OUYA__;</DefineConstants>
+    <DefineConstants>__MOBILE__;__ANDROID__;__OUYA__;__TV__;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -63,6 +63,7 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <None Include="OuyaContent\tapToFly.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />

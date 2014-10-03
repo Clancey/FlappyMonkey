@@ -34,6 +34,7 @@ namespace FlappyMonkey
 	/// </summary>
 	public class Game1 : Game
 	{
+		public Action<int> NotifyScore = (i) => {};
 		#region Fields
 		public static GameState State { get; set; }
 		GraphicsDeviceManager graphics;
@@ -55,7 +56,7 @@ namespace FlappyMonkey
 		ParallaxingBackground clouds2;
 		Texture2D wallTexture, topWallCapTexture, bottomWallCapTexture, 
 			playerTexture, groundBottom, gameOverTexture, scoreBoardTexture,scoreTexture, highScoreTexture;
-		List<Wall> walls = new List<Wall> ();
+		public List<Wall> walls = new List<Wall> ();
 		// The rate at which the walls appear
 		double wallSpanTime, previousWallSpawnTime;
 		// A random number generator
@@ -76,7 +77,7 @@ namespace FlappyMonkey
 		public Game1 ()
 		{
 			graphics = new GraphicsDeviceManager (this) {
-				#if __OUYA__
+				#if __TV__
 				SupportedOrientations = DisplayOrientation.LandscapeLeft |  DisplayOrientation.LandscapeRight,
 				#else 
 				SupportedOrientations = DisplayOrientation.Portrait,
@@ -230,7 +231,7 @@ namespace FlappyMonkey
 
 		bool Toggled ()
 		{
-			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space);
+			return ToggledTappped () || Toggled (Buttons.A) || Toggled (Keys.Space)|| Toggled (Keys.Enter);
 		}
 
 		int maxGap;
@@ -278,7 +279,6 @@ namespace FlappyMonkey
 			// Use the Rectangle's built-in intersect function to 
 			// determine if two objects are overlapping
 			var rectangle1 = player.Rectangle;
-
 			//If it collides with a wall, you die
 			foreach (var wall in walls.Where(x=> x.Collides(rectangle1))) {
 				gameOver ();
@@ -298,6 +298,7 @@ namespace FlappyMonkey
 		void gameOver()
 		{
 			TopScore.Current = score;
+			NotifyScore (TopScore.Current);
 			gameOverTimer = 0;
 			player.Health = 0;
 			player.Active = false;

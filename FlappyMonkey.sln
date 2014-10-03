@@ -2,12 +2,16 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}"
+=======
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyMonkey.Droid", "FlappyMonkey.Droid\FlappyMonkey.Droid.csproj", "{8E1C5FA7-712F-464A-BFA0-0F9897F8E8C6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyMonkey.iOS", "FlappyMonkey.iOS\FlappyMonkey.iOS.csproj", "{9815036A-CCAD-4297-A747-E2ECC5659BB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyMonkey.Ouya", "FlappyMonkey.Droid\FlappyMonkey.Ouya.csproj", "{BC661CE3-71B2-4F37-8720-9C64936E5ED1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyMonkey.Fire", "FlappyMonkey.Droid\FlappyMonkey.Fire.csproj", "{87430AED-367A-431F-8860-0381C91D9DF1}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "FlappyMonkey.Shared", "Shared\FlappyMonkey.Shared.shproj", "{42FE0C01-5BE7-4818-93E1-A36BDCD962C8}"
 EndProject
@@ -23,6 +27,22 @@ Global
 		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|iPhone.Build.0 = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{87430AED-367A-431F-8860-0381C91D9DF1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{8E1C5FA7-712F-464A-BFA0-0F9897F8E8C6}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
 		{8E1C5FA7-712F-464A-BFA0-0F9897F8E8C6}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
 		{8E1C5FA7-712F-464A-BFA0-0F9897F8E8C6}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
@@ -76,6 +96,7 @@ Global
 		{8E1C5FA7-712F-464A-BFA0-0F9897F8E8C6} = {8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}
 		{9815036A-CCAD-4297-A747-E2ECC5659BB8} = {8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}
 		{BC661CE3-71B2-4F37-8720-9C64936E5ED1} = {8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}
+		{87430AED-367A-431F-8860-0381C91D9DF1} = {8F4F3D89-4A94-4F06-ACB1-28F88D0E826C}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = FlappyMonkey.iOS\FlappyMonkey.iOS.csproj

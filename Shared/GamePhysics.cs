@@ -19,7 +19,12 @@ namespace FlappyMonkey
 		public const float WallSpeed = 2.5f;
 
 		//Pixels
+		#if __TV__
+		public const int MinimumGapSize = 350;
+		public const int MaximumGapSize = 400;
+		#else
 		public const int MinimumGapSize = 214;
 		public const int MaximumGapSize = 300;
+		#endif
 	}
 }

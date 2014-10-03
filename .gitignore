@@ -2,6 +2,8 @@
 [Bb]in/
 [Oo]bj/
 *.Designer.cs
+[Cc]omponents
+designer.cs
 
 # mstest test results
 TestResults
@@ -109,3 +111,9 @@ Backup*/
 UpgradeLog*.XML
 
 *.userprefs
+
+Shared/FlappyMonkeyLib.Droid.csproj
+
+Shared/FlappyMonkeyLib.iOS.csproj
+
+Shared/FlappyMonkeyLib.Ouya.csproj
